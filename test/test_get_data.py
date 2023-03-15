@@ -1,15 +1,12 @@
-from src.get_data import get_data
-
-def test_returns_list():
-    assert isinstance(get_data(), list) == True
+from src.get_data import get_staff_data, get_sales_data, get_items_data
 
 
 def test_sales_table_has_correct_length():
-    assert len(get_data()[0]) == 22
+    assert len(get_sales_data()) == 22
 
 
 def test_sales_table_has_correct_keys():
-    for item in get_data()[0]:
+    for item in get_sales_data():
         assert isinstance(item, dict)
         assert "sales_id" in item
         assert "item_name" in item
@@ -20,7 +17,7 @@ def test_sales_table_has_correct_keys():
 
 
 def test_sales_table_has_correct_values():
-    sales_data = get_data()[0]
+    sales_data = get_sales_data()
 
     assert sales_data[0]["sales_id"] == 1
     assert sales_data[1]["item_name"] == "Eau de Fromage"
@@ -29,7 +26,7 @@ def test_sales_table_has_correct_values():
 
 
 def test_sales_table_has_correctly_formatted_price():
-    sales_data = get_data()[0]
+    sales_data = get_sales_data()
 
     for item in sales_data:
         assert isinstance(item["price"], float) == True
@@ -39,7 +36,7 @@ def test_sales_table_has_correctly_formatted_price():
 
 
 def test_sales_table_has_correctly_formatted_date():
-    sales_data = get_data()[0]
+    sales_data = get_sales_data()
 
     for item in sales_data:
         assert isinstance(item["created_at"], str) == True
@@ -49,11 +46,11 @@ def test_sales_table_has_correctly_formatted_date():
 
 
 def test_items_table_has_correct_length():
-    assert len(get_data()[1]) == 25
+    assert len(get_items_data()) == 25
 
 
 def test_items_table_has_correct_keys_and_values():
-    items_data = get_data()[1]
+    items_data = get_items_data()
 
     assert items_data[0]["item_id"] == 1
     assert items_data[1]["item_name"] == "Eau de Fromage"
@@ -63,11 +60,11 @@ def test_items_table_has_correct_keys_and_values():
 
 
 def test_staff_table_has_correct_length():
-    assert len(get_data()[2]) == 17
+    assert len(get_staff_data()) == 17
 
 
 def test_staff_table_has_correct_keys_and_values():
-    items_data = get_data()[2]
+    items_data = get_staff_data()
 
     assert items_data[0]["staff_id"] == 1
     assert items_data[1]["first_name"] == "Cat"
