@@ -1,5 +1,6 @@
 from src.format_stock import format_stock
 
+
 def test_returns_list():
     assert format_stock([]) == []
 
@@ -49,4 +50,33 @@ def test_extracts_multiple_items():
         }
     ]
 
-    assert format_stock(example) == [["Louboutin Flip Flops", 5], ["Eau de Fromage", 10]]
+    expected = [["Louboutin Flip Flops", 5], ["Eau de Fromage", 10]]
+    assert format_stock(example) == expected
+
+
+def test_ignores_empty_strings():
+    example = [
+        {
+            "item_id": 1,
+            "item_name": "",
+            "features": ["Designer", "Faux-Faux-Leather"],
+            "department": "Footwear",
+            "amount": 5
+        }
+    ]
+
+    assert format_stock(example) == []
+
+
+def test_adds_items_with_0_amount():
+    example = [
+        {
+            "item_id": 1,
+            "item_name": "Louboutin Flip Flops",
+            "features": ["Designer", "Faux-Faux-Leather"],
+            "department": "Footwear",
+            "amount": 0
+        }
+    ]
+
+    assert format_stock(example) == [["Louboutin Flip Flops", 0]]
