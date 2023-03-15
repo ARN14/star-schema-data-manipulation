@@ -1,5 +1,6 @@
 from src.format_sales import format_sales
 
+
 def test_returns_list():
     assert format_sales([], [], []) == []
 
@@ -9,7 +10,7 @@ def test_returns_empty_list_when_no_sale_found():
         {
             "item_id": 1,
             "item_name": "Louboutin Flip Flops",
-            "amount_in_stock":5
+            "amount_in_stock": 5
         }
     ]
     staff = [
@@ -39,7 +40,7 @@ def test_returns_correct_list_for_one_sale():
         {
             "item_id": 2,
             "item_name": "Louboutin Flip Flops",
-            "amount_in_stock":5
+            "amount_in_stock": 5
         }
     ]
     staff = [
@@ -61,7 +62,9 @@ def test_returns_correct_list_for_one_sale():
         }
     ]
 
-    assert format_sales(stock, staff, data) == [[2, 5, 22.49, 10, "2023-01-03 10:34:56"]]
+    expected = [[2, 5, 22.49, 10, "2023-01-03 10:34:56"]]
+
+    assert format_sales(stock, staff, data) == expected
 
 
 def test_adds_multiple_distinct_sales():
@@ -69,7 +72,7 @@ def test_adds_multiple_distinct_sales():
         {
             "item_id": 1,
             "item_name": "Louboutin Flip Flops",
-            "amount_in_stock":5
+            "amount_in_stock": 5
         },
         {
             "item_id": 2,
@@ -132,7 +135,7 @@ def test_ignores_incomplete_data():
         {
             "item_id": 1,
             "item_name": "Louboutin Flip Flops",
-            "amount_in_stock":5
+            "amount_in_stock": 5
         }
     ]
     staff = [
