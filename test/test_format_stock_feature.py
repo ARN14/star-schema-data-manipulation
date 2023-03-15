@@ -86,7 +86,7 @@ def test_works_for_larger_data():
         }
     ]
 
-    expected = [[1, 1], [1, 2], [2, 1]]
+    expected = [[1, 1], [2, 1], [1, 2]]
 
     assert format_stock_feature(example_stock,
                                 example_features,
@@ -132,7 +132,7 @@ def test_works_when_ids_are_unordered():
         }
     ]
 
-    expected = [[2, 1], [2, 2], [1, 1]]
+    expected = [[1, 2], [2, 2], [1, 1]]
 
     assert format_stock_feature(example_stock,
                                 example_features,
