@@ -7,11 +7,11 @@ def test_returns_list():
 
 def test_ignores_item_not_in_original_data():
     example_stock = [
-        {
-            "item_id": 1,
-            "item_name": "Louboutin Flip Flops",
-            "amount_in_stock": 5
-        }
+        [
+            1,
+            "Louboutin Flip Flops",
+            5
+        ]
     ]
 
     assert format_stock_feature(example_stock, [], []) == []
@@ -19,17 +19,17 @@ def test_ignores_item_not_in_original_data():
 
 def test_matches_stock_to_single_feature():
     example_stock = [
-        {
-            "item_id": 1,
-            "item_name": "Louboutin Flip Flops",
-            "amount_in_stock": 5
-        }
+        [
+            1,
+            "Louboutin Flip Flops",
+            5
+        ]
     ]
     example_features = [
-        {
-            "feature_id": 1,
-            "feature_name": "Designer"
-        }
+        [
+            1,
+            "Designer"
+        ]
     ]
     original_data = [
         {
@@ -49,25 +49,25 @@ def test_matches_stock_to_single_feature():
 
 def test_works_for_larger_data():
     example_stock = [
-        {
-            'item_id': 1,
-            'item_name': 'Louboutin Flip Flops',
-            'amount_in_stock': 5
-        }, {
-            'item_id': 2,
-            'item_name': 'Eau de Fromage',
-            'amount_in_stock': 10
-        }
+        [
+            1,
+            "Louboutin Flip Flops",
+            5
+        ], [
+            2,
+            'Eau de Fromage',
+            10
+        ]
     ]
     example_features = [
-        {
-            'feature_id': 1,
-            'feature_name': 'Designer'
-        },
-        {
-            'feature_id': 2,
-            'feature_name': 'Faux-Faux-Leather'
-        }
+        [
+            1,
+            "Designer"
+        ],
+        [
+            2,
+            'Faux-Faux-Leather'
+        ]
     ]
     original_data = [
         {
@@ -95,25 +95,25 @@ def test_works_for_larger_data():
 
 def test_works_when_ids_are_unordered():
     example_stock = [
-        {
-            'item_id': 2,
-            'item_name': 'Louboutin Flip Flops',
-            'amount_in_stock': 5
-        }, {
-            'item_id': 1,
-            'item_name': 'Eau de Fromage',
-            'amount_in_stock': 10
-        }
+        [
+            2,
+            "Louboutin Flip Flops",
+            5
+        ], [
+            1,
+            'Eau de Fromage',
+            10
+        ]
     ]
     example_features = [
-        {
-            'feature_id': 1,
-            'feature_name': 'Designer'
-        },
-        {
-            'feature_id': 2,
-            'feature_name': 'Faux-Faux-Leather'
-        }
+        [
+            1,
+            "Designer"
+        ],
+        [
+            2,
+            'Faux-Faux-Leather'
+        ]
     ]
     original_data = [
         {
