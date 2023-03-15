@@ -1,5 +1,6 @@
 from src.format_stock_feature import format_stock_feature
 
+
 def test_returns_list():
     assert format_stock_feature([], [], []) == []
 
@@ -9,7 +10,7 @@ def test_ignores_item_not_in_original_data():
         {
             "item_id": 1,
             "item_name": "Louboutin Flip Flops",
-            "amount_in_stock":5
+            "amount_in_stock": 5
         }
     ]
 
@@ -27,7 +28,7 @@ def test_matches_stock_to_single_feature():
     example_features = [
         {
             "feature_id": 1,
-            "feature_name":"Designer"
+            "feature_name": "Designer"
         }
     ]
     original_data = [
@@ -40,7 +41,10 @@ def test_matches_stock_to_single_feature():
         }
     ]
 
-    assert format_stock_feature(example_stock, example_features, original_data) == [[1, 1]]
+    expected = [[1, 1]]
+    assert format_stock_feature(example_stock,
+                                example_features,
+                                original_data) == expected
 
 
 def test_works_for_larger_data():
@@ -48,7 +52,7 @@ def test_works_for_larger_data():
         {
             'item_id': 1,
             'item_name': 'Louboutin Flip Flops',
-            'amount_in_stock':5
+            'amount_in_stock': 5
         }, {
             'item_id': 2,
             'item_name': 'Eau de Fromage',
@@ -57,12 +61,12 @@ def test_works_for_larger_data():
     ]
     example_features = [
         {
-            'feature_id':1,
-            'feature_name':'Designer'
+            'feature_id': 1,
+            'feature_name': 'Designer'
         },
         {
-            'feature_id':2,
-            'feature_name':'Faux-Faux-Leather'
+            'feature_id': 2,
+            'feature_name': 'Faux-Faux-Leather'
         }
     ]
     original_data = [
@@ -82,15 +86,19 @@ def test_works_for_larger_data():
         }
     ]
 
-    assert format_stock_feature(example_stock, example_features, original_data) == [[1, 1], [1, 2], [2, 1]]
+    expected = [[1, 1], [1, 2], [2, 1]]
+
+    assert format_stock_feature(example_stock,
+                                example_features,
+                                original_data) == expected
 
 
-def test_works_when_ids_dont_match():
+def test_works_when_ids_are_unordered():
     example_stock = [
         {
             'item_id': 2,
             'item_name': 'Louboutin Flip Flops',
-            'amount_in_stock':5
+            'amount_in_stock': 5
         }, {
             'item_id': 1,
             'item_name': 'Eau de Fromage',
@@ -99,12 +107,12 @@ def test_works_when_ids_dont_match():
     ]
     example_features = [
         {
-            'feature_id':1,
-            'feature_name':'Designer'
+            'feature_id': 1,
+            'feature_name': 'Designer'
         },
         {
-            'feature_id':2,
-            'feature_name':'Faux-Faux-Leather'
+            'feature_id': 2,
+            'feature_name': 'Faux-Faux-Leather'
         }
     ]
     original_data = [
@@ -124,4 +132,8 @@ def test_works_when_ids_dont_match():
         }
     ]
 
-    assert format_stock_feature(example_stock, example_features, original_data) == [[2, 1], [2, 2], [1, 1]]
+    expected = [[2, 1], [2, 2], [1, 1]]
+
+    assert format_stock_feature(example_stock,
+                                example_features,
+                                original_data) == expected
