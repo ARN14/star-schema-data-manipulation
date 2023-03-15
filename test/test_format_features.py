@@ -1,5 +1,6 @@
 from src.format_features import format_features
 
+
 def test_returns_list():
     assert format_features([]) == []
 
@@ -22,7 +23,8 @@ def test_extracts_single_feature():
             "item_id": 1,
             "item_name": "Louboutin Flip Flops",
             "features": ["Designer"],
-            "department": "Footwear", "amount": 5
+            "department": "Footwear",
+            "amount": 5
         }
     ]
 
@@ -35,7 +37,8 @@ def test_extracts_multiple_features():
             "item_id": 1,
             "item_name": "Louboutin Flip Flops",
             "features": ["Designer", "Faux-Faux-Leather"],
-            "department": "Footwear", "amount": 5
+            "department": "Footwear",
+            "amount": 5
         }
     ]
 
@@ -48,7 +51,8 @@ def test_extracts_features_from_multiple_dictionaries():
             "item_id": 1,
             "item_name": "Louboutin Flip Flops",
             "features": ["Designer", "Faux-Faux-Leather"],
-            "department": "Footwear", "amount": 5
+            "department": "Footwear",
+            "amount": 5
         },
         {
             "item_id": 2,
@@ -59,7 +63,9 @@ def test_extracts_features_from_multiple_dictionaries():
         }
     ]
 
-    assert format_features(example) == [["Designer"], ["Faux-Faux-Leather"], ["Fragrance"]]
+    expected = [["Designer"], ["Faux-Faux-Leather"], ["Fragrance"]]
+
+    assert format_features(example) == expected
 
 
 def test_returned_features_dont_repeat():
@@ -68,7 +74,8 @@ def test_returned_features_dont_repeat():
             "item_id": 1,
             "item_name": "Louboutin Flip Flops",
             "features": ["Designer", "Faux-Faux-Leather"],
-            "department": "Footwear", "amount": 5
+            "department": "Footwear",
+            "amount": 5
         },
         {
             "item_id": 2,
@@ -79,4 +86,34 @@ def test_returned_features_dont_repeat():
         }
     ]
 
-    assert format_features(example) == [["Designer"], ["Faux-Faux-Leather"], ["Fragrance"]]
+    expected = [["Designer"], ["Faux-Faux-Leather"], ["Fragrance"]]
+
+    assert format_features(example) == expected
+
+
+def test_ignores_empty_features():
+    example = [
+        {
+            "item_id": 1,
+            "item_name": "Louboutin Flip Flops",
+            "features": [],
+            "department": "Footwear",
+            "amount": 5
+        }
+    ]
+
+    assert format_features(example) == []
+
+
+def test_ignores_empty_strings():
+    example = [
+        {
+            "item_id": 1,
+            "item_name": "Louboutin Flip Flops",
+            "features": [""],
+            "department": "Footwear",
+            "amount": 5
+        }
+    ]
+
+    assert format_features(example) == []
