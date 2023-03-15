@@ -7,19 +7,19 @@ def test_returns_list():
 
 def test_returns_empty_list_when_no_sale_found():
     stock = [
-        {
-            "item_id": 1,
-            "item_name": "Louboutin Flip Flops",
-            "amount_in_stock": 5
-        }
+        [
+            1,
+            "Louboutin Flip Flops",
+            5
+        ]
     ]
     staff = [
-        {
-            "staff_id": 1,
-            "first_name": "Duncan",
-            "last_name": "Crawley",
-            "department_id": 1
-        }
+        [
+            1,
+            "Duncan",
+            "Crawley",
+            1
+        ]
     ]
     data = [
         {
@@ -37,19 +37,19 @@ def test_returns_empty_list_when_no_sale_found():
 
 def test_returns_correct_list_for_one_sale():
     stock = [
-        {
-            "item_id": 2,
-            "item_name": "Louboutin Flip Flops",
-            "amount_in_stock": 5
-        }
+        [
+            2,
+            "Louboutin Flip Flops",
+            5
+        ]
     ]
     staff = [
-        {
-            "staff_id": 5,
-            "first_name": "Duncan",
-            "last_name": "Crawley",
-            "department_id": 1
-        }
+        [
+            5,
+            "Duncan",
+            "Crawley",
+            1
+        ]
     ]
     data = [
         {
@@ -69,30 +69,30 @@ def test_returns_correct_list_for_one_sale():
 
 def test_adds_multiple_distinct_sales():
     stock = [
-        {
-            "item_id": 1,
-            "item_name": "Louboutin Flip Flops",
-            "amount_in_stock": 5
-        },
-        {
-            "item_id": 2,
-            "item_name": "Eau de Fromage",
-            "amount_in_stock": 10
-        }
+        [
+            1,
+            "Louboutin Flip Flops",
+            5
+        ],
+        [
+            2,
+            "Eau de Fromage",
+            10
+        ]
     ]
     staff = [
-        {
-            "staff_id": 1,
-            "first_name": "Duncan",
-            "last_name": "Crawley",
-            "department_id": 1
-        },
-        {
-            "staff_id": 2,
-            "first_name": "Cat",
-            "last_name": "Hoang",
-            "department_id": 2
-        }
+        [
+            1,
+            "Duncan",
+            "Crawley",
+            1
+        ],
+        [
+            2,
+            "Cat",
+            "Hoang",
+            2
+        ]
     ]
     data = [
         {
@@ -132,19 +132,19 @@ def test_adds_multiple_distinct_sales():
 
 def test_ignores_incomplete_data():
     stock = [
-        {
-            "item_id": 1,
-            "item_name": "Louboutin Flip Flops",
-            "amount_in_stock": 5
-        }
+        [
+            1,
+            "Louboutin Flip Flops",
+            5
+        ]
     ]
     staff = [
-        {
-            "staff_id": 1,
-            "first_name": "Duncan",
-            "last_name": "Crawley",
-            "department_id": 1
-        }
+        [
+            1,
+            "Duncan",
+            "Crawley",
+            1
+        ]
     ]
     data = [
         {
