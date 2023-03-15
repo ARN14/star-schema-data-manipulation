@@ -15,10 +15,10 @@ def test_matches_correct_department():
         }
     ]
     example_department = [
-        {
-            "department_id": 1,
-            "department_name": "Beauty"
-        }
+        [
+            1,
+            "Beauty"
+        ]
     ]
 
     expected = [["Duncan", "Crawley", 1]]
@@ -42,14 +42,14 @@ def test_searches_multiple_departments():
         }
     ]
     example_department = [
-        {
-            "department_id": 2,
-            "department_name": "Beauty"
-        },
-        {
-            "department_id": 1,
-            "department_name": "Footwear"
-        }
+        [
+            2,
+            "Beauty"
+        ],
+        [
+            1,
+            "Footwear"
+        ]
     ]
     expected = [["Duncan", "Crawley", 2], ["Cat", "Hoang", 1]]
 
@@ -72,10 +72,10 @@ def test_matches_multiple_staff_to_one_department():
         }
     ]
     example_department = [
-        {
-            "department_id": 5,
-            "department_name": "Beauty"
-        }
+        [
+            5,
+            "Beauty"
+        ]
     ]
     expected = [["Duncan", "Crawley", 5], ["Cat", "Hoang", 5]]
 
@@ -98,10 +98,10 @@ def test_ignores_staff_when_department_not_found():
         }
     ]
     example_department = [
-        {
-            "department_id": 1,
-            "department_name": "Beauty"
-        }
+        [
+            1,
+            "Beauty"
+        ]
     ]
     expected = [["Duncan", "Crawley", 1]]
 
@@ -123,13 +123,13 @@ def test_ignores_incorrect_data():
         }
     ]
     example_department = [
-        {
-            'department_id': 1,
-            'department_name': 'Beauty'
-        },
-        {
-            "department_id": 2
-        }
+        [
+            1,
+            "Beauty"
+        ],
+        [
+            1
+        ]
     ]
     expected = []
 
