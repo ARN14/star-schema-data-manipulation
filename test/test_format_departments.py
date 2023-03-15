@@ -1,5 +1,6 @@
 from src.format_departments import format_departments
 
+
 def test_returns_list():
     assert format_departments([]) == []
 
@@ -96,5 +97,33 @@ def test_ignores_repeat_departments():
         }
     ]
     expected = [["Beauty"]]
+
+    assert format_departments(example) == expected
+
+
+def test_ignores_empty_strings():
+    example = [
+        {
+            "staff_id": 1,
+            "first_name": "Duncan",
+            "last_name": "Crawley",
+            "department": ""
+        }
+    ]
+    expected = []
+
+    assert format_departments(example) == expected
+
+
+def test_ignores_incorrect_types():
+    example = [
+        {
+            "staff_id": 1,
+            "first_name": "Duncan",
+            "last_name": "Crawley",
+            "department": 37
+        }
+    ]
+    expected = []
 
     assert format_departments(example) == expected
