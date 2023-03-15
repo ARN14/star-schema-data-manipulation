@@ -2,23 +2,16 @@ def format_staff(staff_data, department_data):
     formatted_staff = []
 
     for staff in staff_data:
-        required_department_id = 0
+        department_id = [row[0] for row in department_data if row[1] == staff["department"]]
 
-        for department in department_data:
-            if "department_name" in department\
-                    and "department_id" in department\
-                    and department["department_name"] == staff["department"]:
+        if not department_id:
+            continue
 
-                required_department_id = department["department_id"]
-
-        if required_department_id != 0\
-            and "first_name" in staff\
-                and "last_name" in staff:
-            formatted_staff.append(
+        formatted_staff.append(
                 [
                     staff["first_name"],
                     staff["last_name"],
-                    required_department_id
+                    department_id[0]
                 ])
 
     return formatted_staff

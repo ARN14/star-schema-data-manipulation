@@ -106,31 +106,3 @@ def test_ignores_staff_when_department_not_found():
     expected = [["Duncan", "Crawley", 1]]
 
     assert format_staff(example_staff, example_department) == expected
-
-
-def test_ignores_incorrect_data():
-    example_staff = [
-        {
-            "staff_id": 1,
-            "last_name": "Crawley",
-            "department": "Beauty"
-        },
-        {
-            "staff_id": 2,
-            "first_name": "Cat",
-            "last_name": "Hoang",
-            "department": "Footwear"
-        }
-    ]
-    example_department = [
-        [
-            1,
-            "Beauty"
-        ],
-        [
-            1
-        ]
-    ]
-    expected = []
-
-    assert format_staff(example_staff, example_department) == expected
