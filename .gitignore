@@ -1,4 +1,4 @@
-**/*py*
+**/*pycache*
 venv
-connection_details
+connection_details.py
 setup-db.sql
