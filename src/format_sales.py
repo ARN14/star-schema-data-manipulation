@@ -4,13 +4,13 @@ def format_sales(stock, staff_list, original_data):
     for sale in original_data:
 
         item_id = next(
-            (item["item_id"] for item in stock
-             if item["item_name"] == sale["item_name"]),
+            (item[0] for item in stock
+             if item[1] == sale["item_name"]),
             None)
         salesperson = next(
-            (staff["staff_id"] for staff in staff_list
-             if staff["first_name"] +
-                " " + staff["last_name"] == sale["salesperson"]),
+            (staff[0] for staff in staff_list
+             if staff[1] +
+                " " + staff[2] == sale["salesperson"]),
             None)
 
         try:
