@@ -29,7 +29,7 @@ def test_sales_table_has_correctly_formatted_price():
     sales_data = get_sales_data()
 
     for item in sales_data:
-        assert isinstance(item["price"], float) == True
+        assert type(item["price"]) == float
 
     assert sales_data[1]["price"] == 29.95
     assert sales_data[5]["price"] == 94.16
@@ -39,7 +39,7 @@ def test_sales_table_has_correctly_formatted_date():
     sales_data = get_sales_data()
 
     for item in sales_data:
-        assert isinstance(item["created_at"], str) == True
+        assert type(item["created_at"]) == str
 
     assert sales_data[6]["created_at"] == "2023-01-27 14:10:36"
     assert sales_data[7]["created_at"] == "2023-01-08 04:05:06"

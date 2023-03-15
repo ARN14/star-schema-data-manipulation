@@ -1,5 +1,4 @@
 import pg8000.native as pg
-from datetime import datetime
 from connection_details import name, database
 
 conn = pg.Connection(name, database=database)
