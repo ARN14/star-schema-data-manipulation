@@ -3,14 +3,15 @@ from src.get_data import get_staff_data, get_sales_data, get_items_data
 from src.format_features import format_features
 from src.format_stock import format_stock
 from src.format_stock_feature import format_stock_feature
+from src.format_departments import format_departments
 from connection_details import name, new_database
 
 conn = pg.Connection(name, database=new_database)
 
 def populate_new_database():
+    items_data = get_items_data()
     staff_data = get_staff_data()
     sales_data = get_sales_data()
-    items_data = get_items_data()
 
     dim_features = format_features(items_data)
     for feature in dim_features:
@@ -23,15 +24,11 @@ def populate_new_database():
     new_features = conn.run("SELECT * FROM dim_features;")
     new_stock = conn.run("SELECT * FROM dim_stock;")
 
-    # print(new_stock)
-    # print(new_features)
-    # print(items_data)
-
     stock_features = format_stock_feature(new_stock, new_features, items_data)
     for ids in stock_features:
-        print(ids)
-        conn.run("INSERT INTO stock_feature_junc (feature_id, stock_id) VALUES (:feature, :stock)", stock=ids[0], feature=ids[1])
-    conn.run("SELECT * FROM stock_feature_junc;")
+        conn.run("INSERT INTO stock_feature_junc (feature_id, stock_id) VALUES (:feature, :stock)", feature=ids[0], stock=ids[1])
 
-
+    dim_department = format_departments(staff_data)
+    for department in dim_department:
+        conn.run("INSERT INTO dim_department (department_name) VALUES (:name)", name=department[0])
 populate_new_database()
